@@ -27,8 +27,8 @@ const loadFormData = () => {
     form.elements.message.value = message || "";
 }
 
-const inputForm = (e) => {
-      const { email, message } = e.target.parentNode.parentNode.elements;
+const inputForm = () => {
+      const { email, message } = form.elements;
       save("feedback-form-state", { email: email.value.trim(), message: message.value.trim() });
 }
 
@@ -36,7 +36,6 @@ const inputForm = (e) => {
 const submitForm = (e) => {
     e.preventDefault();
     const {email , message} = e.currentTarget.elements;
-    if (email.value.trim() === "" || message.value.trim() === "")  return alert("Please fill in all the fields!");
     console.log({email: email.value.trim(), message: message.value.trim() });
     e.currentTarget.reset();
     localStorage.removeItem("feedback-form-state");
