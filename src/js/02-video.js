@@ -21,12 +21,14 @@ const load = key => {
     console.error("Get state error: ", error.message);
   }
 };
+
 const player = new Player(iframe);
+
 const currentTime = load("videoplayer-current-time");
 
 player.setCurrentTime(!currentTime ? 0 : currentTime);
+
 const onPlay = ({seconds}) =>{
-    // data is an object containing properties specific to that event
    save("videoplayer-current-time", seconds)
 };
 
