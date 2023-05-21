@@ -22,19 +22,16 @@ const load = key => {
 };
 
 const loadFormData = () => {
-    const formData = load("feedback-form-state");
-    if (formData) {
-        const { email, message } = formData;
-        form.elements.email.value = email || "";
-        form.elements.message.value = message || "";
-    }
+    const { email, message } = load("feedback-form-state") || {};
+    form.elements.email.value = email || "";
+    form.elements.message.value = message || "";
 }
 
 const inputForm = (e) => {
-    const { email, message } = e.currentTarget.elements;
-    // console.log({email: email.value.trim(), message: message.value.trim() })
-    save("feedback-form-state",{email: email.value.trim(), message: message.value.trim() });
-    }
+      const { email, message } = e.target.parentNode.parentNode.elements;
+      save("feedback-form-state", { email: email.value.trim(), message: message.value.trim() });
+}
+
 
 const submitForm = (e) => {
     e.preventDefault();
