@@ -35,7 +35,8 @@ const inputForm = () => {
 
 const submitForm = (e) => {
     e.preventDefault();
-    const {email , message} = e.currentTarget.elements;
+    const { email, message } = e.currentTarget.elements;
+    if (email.value.trim() === "" || message.value.trim() === "")  return alert("Please fill in all the fields!");
     console.log({email: email.value.trim(), message: message.value.trim() });
     e.currentTarget.reset();
     localStorage.removeItem("feedback-form-state");
